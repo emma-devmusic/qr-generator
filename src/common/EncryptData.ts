@@ -1,5 +1,8 @@
 import * as crypto from 'crypto-js';
 
+
+
+//encriptador
 export default class EncryptData {
     constructor(private key: string) {
         this.key = key;
@@ -33,9 +36,10 @@ export default class EncryptData {
 
 
 
+//encripta la informacion del usuario logueado en sessionStorage
 export const encryptAndSave = (data: any) => {
     const encrytp = new EncryptData(import.meta.env.VITE_SERVER_SECRET);
-    const dataEncrypted = encrytp.encrypt(data);
+    const dataEncrypted = encrytp.encrypt(JSON.stringify( data ));
     sessionStorage.setItem('user-data', dataEncrypted);
     return {
         error: false,
@@ -43,10 +47,12 @@ export const encryptAndSave = (data: any) => {
     }
 }
 
-export const useUserSave = () => {
+
+//trae la informacion del usuario logueado desde el sessionStorage
+export const useUser = () => {
     const encrytp = new EncryptData(import.meta.env.VITE_SERVER_SECRET);
     const dataEncrypted = sessionStorage.getItem('user-data');
-    return encrytp.decrypt(dataEncrypted);
+    return encrytp.decrypt(dataEncrypted).data;
 }
 
 

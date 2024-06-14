@@ -3,6 +3,7 @@ import { Layout } from "../Layout";
 import { Generator } from "../pages/Generator";
 import { Reader } from "../pages/Reader";
 import { Login } from "../pages/Login";
+import { Welcome } from '../pages/Welcome';
 
 export const router = createBrowserRouter([
     {
@@ -11,7 +12,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <h1>Bienvenido</h1>,
+                element: <Welcome />,
             },
             {
                 path: "/generator",

@@ -1,10 +1,17 @@
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import logo from '../assets/img/logo-text-white.png'
 
 export const Navbar = () => {
 
     const location = useLocation()
+    const navigate = useNavigate();
+
     const login = location.pathname === '/login'
+
+    const handleLogout = () => {
+        navigate('/login');
+        sessionStorage.clear();
+    }
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
@@ -37,7 +44,12 @@ export const Navbar = () => {
                                 </li>
                             </ul>
                             <div>
-                                <button className="btn btn-outline-danger">Salir</button>
+                                <button 
+                                    className="btn btn-outline-danger"
+                                    onClick={handleLogout}
+                                >
+                                    Salir
+                                </button>
                             </div>
                         </div>
                     </>
