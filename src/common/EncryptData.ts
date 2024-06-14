@@ -30,3 +30,24 @@ export default class EncryptData {
     }
 }
 
+
+
+
+export const encryptAndSave = (data: any) => {
+    const encrytp = new EncryptData(import.meta.env.VITE_SERVER_SECRET);
+    const dataEncrypted = encrytp.encrypt(data);
+    sessionStorage.setItem('user-data', dataEncrypted);
+    return {
+        error: false,
+        msg: 'Iniciando Session'
+    }
+}
+
+export const useUserSave = () => {
+    const encrytp = new EncryptData(import.meta.env.VITE_SERVER_SECRET);
+    const dataEncrypted = sessionStorage.getItem('user-data');
+    return encrytp.decrypt(dataEncrypted);
+}
+
+
+

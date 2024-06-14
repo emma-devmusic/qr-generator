@@ -1,8 +1,28 @@
-import logo from '../assets/img/logo-text-red.png'
+import { useState } from 'react'
+import logo from '../assets/img/logo-text-white.png'
+import { useForm } from '../hooks/useForm'
+import { Icon } from '@iconify/react/dist/iconify.js'
 
 
 
 export const Login = () => {
+
+    const [values, handleInputChange, reset] = useForm({
+        user: '',
+        pass: '',
+        remember: ''
+    })
+
+    const [ remember, setRemember ] = useState(false)
+
+    const [showPass, setShowPass] = useState(false);
+
+    const handleShowPass = () => setShowPass(!showPass);
+
+    const handleSubmit = (e:any) => {
+        e.preventDefault();
+    }
+
     return (
         <section 
             className="bg-light py-3 py-md-5 d-flex justify-content-center align-items-center" 
@@ -29,9 +49,9 @@ export const Login = () => {
                                         <div className="col-12">
                                             <div className="form-floating mb-3">
                                                 <input
-                                                    type="email"
+                                                    type="text"
                                                     className="form-control"
-                                                    name="email"
+                                                    name="user"
                                                     id="email"
                                                     placeholder="name@example.com"
                                                     required
@@ -40,38 +60,71 @@ export const Login = () => {
                                             </div>
                                         </div>
                                         <div className="col-12">
-                                            <div className="form-floating mb-3">
-                                                <input
-                                                    type="password"
-                                                    className="form-control"
-                                                    name="password"
-                                                    id="password"
-                                                    placeholder="Password"
-                                                    required
-                                                />
-                                                <label htmlFor="password" className="form-label">Contraseña</label>
+                                            <div className='d-flex w-100 align-items-center'>
+                                                <div className="form-floating mb-3 w-100">
+                                                    <input
+                                                        type={!showPass ? "password" : "text"}
+                                                        className="form-control"
+                                                        name="password"
+                                                        id="password"
+                                                        placeholder="Password"
+                                                        required
+                                                    />
+                                                    <label htmlFor="password" className="form-label">Contraseña</label>
+                                                </div>
+                                                {
+                                                    !showPass
+                                                    ?
+                                                    <Icon 
+                                                        id='showPass' 
+                                                        icon={ 'iconoir:eye-solid' } 
+                                                        onClick={handleShowPass}
+                                                        style={{
+                                                        position: 'absolute',
+                                                        fontSize: '1.5rem',
+                                                        transform: 'translateY(-8px)'
+                                                    }}/>
+                                                    :
+                                                    <Icon 
+                                                        id='showPass' 
+                                                        icon={ 'fluent:eye-off-24-filled' } 
+                                                        onClick={handleShowPass}
+                                                        style={{
+                                                        position: 'absolute',
+                                                        fontSize: '1.5rem',
+                                                        transform: 'translateY(-8px)'
+                                                    }}/>
+                                                }
+
                                             </div>
                                         </div>
-                                        {/* <div className="col-12">
+                                        <div className="col-12 mb-3">
                                             <div className="d-flex gap-2 justify-content-between">
                                                 <div className="form-check">
                                                     <input
                                                         className="form-check-input"
                                                         type="checkbox"
-                                                        value=""
+                                                        checked={remember}
+                                                        onChange={() => setRemember(!remember)}
                                                         name="rememberMe"
                                                         id="rememberMe"
                                                     />
-                                                    <label className="form-check-label text-secondary" htmlFor="rememberMe">
-                                                        Keep me logged in
+                                                    <label className="form-check-label text-white" htmlFor="rememberMe">
+                                                        Recordarme
                                                     </label>
                                                 </div>
-                                                <a href="#!" className="link-primary text-decoration-none">Forgot password?</a>
+                                                {/* <a href="#!" className="link-primary text-decoration-none">Forgot password?</a> */}
                                             </div>
-                                        </div> */}
+                                        </div>
                                         <div className="col-12">
                                             <div className="d-grid">
-                                                <button className="btn btn-danger btn-lg" type="submit">Ingresar</button>
+                                                <button 
+                                                    className="btn btn-danger btn-lg" 
+                                                    type="submit"
+                                                    onClick={handleSubmit}
+                                                >
+                                                    Ingresar
+                                                </button>
                                             </div>
                                         </div>
                                         {/* <div className="col-12">

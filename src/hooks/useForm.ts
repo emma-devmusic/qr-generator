@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type FormValues = { [key: string]: string };
+type FormValues = { [key: string]: any };
 
 type UseFormReturn = [
   FormValues,
