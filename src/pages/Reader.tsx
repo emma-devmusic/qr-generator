@@ -1,15 +1,11 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { Html5QrcodeScanner } from 'html5-qrcode';
 import { Html5QrcodePlugin } from '../components/Html5QrcodePlugin';
 
 
 
 export const Reader = () => {
 
-    const onNewScanResult = (decodedText:any, decodedResult:any) => {
-        // handle decoded results here
-        
-    };
+
 
 
     return (
@@ -24,17 +20,9 @@ export const Reader = () => {
                 </div>
                 <hr className='w-100 bg-white' />
                 <div>
-                <Html5QrcodePlugin
-                        // fps={10}
-                        // qrbox={200}
-                        // disableFlip={false}
-                        // qrCodeSuccessCallback={onNewScanResult}
-                    />
+                    <Html5QrcodePlugin />
                 </div>
                 <hr className='w-100 bg-white' />
-                <div className='m-3 d-flex justify-content-center align-items-center h-100'>
-                    
-                </div>
             </div>
         </div>
     )

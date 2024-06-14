@@ -13,3 +13,9 @@ interface LoginData {
     user: string;
     pass: string;
 }
+
+interface QRResult {
+    email: string;
+    name: string;
+    dni: string;
+}
