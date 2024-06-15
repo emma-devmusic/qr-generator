@@ -7,8 +7,6 @@ export const Layout = () => {
 
     const navigate = useNavigate();
     const location = useLocation()
-    const pathsAdmin = ['/', '/generator', '/reader']
-    const pathsReader = ['/', '/reader']
 
     useEffect(() => {
         //Revisar si hay o no session iniciada y redireccionar en cada caso
