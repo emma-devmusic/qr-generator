@@ -2,7 +2,7 @@
   "name": "qr-generator",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://emma-devmusic.github.io/qr-generator/dist",
+  "homepage": "https://emma-devmusic.github.io/qr-generator/dist/",
   "type": "module",
   "scripts": {
     "dev": "vite",
