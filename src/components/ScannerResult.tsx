@@ -13,8 +13,6 @@ export const ScannerResult = ({ result }: { result: string; }) => {
         setData( dataDecrypted.data )
     },[])
 
-    console.log(data)
-
     return (
         <div className="my-4">
             <p className="text-center"><Icon icon={'simple-line-icons:check'} className="fs-1 text-success" /></p>

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { ScannerResult } from './ScannerResult';
 
 
-export const Html5QrcodePlugin = (props: any) => {
+export const Html5QrcodePlugin = () => {
 
     const [scanResult, setScanReuslt] = useState(null);
     useEffect(() => {
@@ -27,7 +27,6 @@ export const Html5QrcodePlugin = (props: any) => {
             scanner.render(success, error)
         }
     }, [scanResult])
-
 
     return (
         <div>

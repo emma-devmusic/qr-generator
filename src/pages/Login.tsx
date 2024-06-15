@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import logo from '../assets/img/logo-text-white.png'
 import { useForm } from '../hooks/useForm'
 import { Icon } from '@iconify/react/dist/iconify.js'
@@ -21,10 +21,12 @@ export const Login = () => {
         pass: userLocalStorage?.pass || '',
     })
 
+
     const handleShowPass = () => setShowPass(!showPass);
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
+
         const resp = checkUser(values as LoginData)
         if (!resp.error) {
             if (remember) {
@@ -37,6 +39,8 @@ export const Login = () => {
                 Swal.fire('Accediendo', init.msg, 'success');
                 navigate('/')
             }
+        } else {
+            Swal.fire('Ups!', 'Parece que el usuario o la contraseña son incorrectos', 'error');
         }
         reset()
     }
